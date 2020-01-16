@@ -277,7 +277,7 @@ of the price of diamonds by their weight measured in carats with the command
 
 ```{r plot-price-vs-carat}
 ggplot(data = diamonds, aes(x = carat, y = price)) +
-  geom_point()
+  geom_point() + geom_point(color = "blue")
 ```
 
 Before we review the code for this plot, let's summarize the trends we see in the 
@@ -411,6 +411,12 @@ Now, with your partner, play with mutate and piping and create a plot of interes
 ```{r plot-of-something-interesting}
 # type your code for the Exercise here, and Knit
 
+diamonds <- diamonds%>%
+  mutate(bigprice = carat*total*depth*table)
+
+ggplot(data = diamonds, aes(x = bigprice, y = price)) +
+  geom_line() +
+  geom_point()
 
 
 ```
